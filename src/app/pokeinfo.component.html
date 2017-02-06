@@ -1,0 +1,27 @@
+<input class="form-control" placeholder="Search for..." (keyup)="filterData($event)" [(ngModel)]="texto" type='text'>
+
+
+<div class="panel panel-default" *ngIf="selected!=null" [@flyInOut]='in'>
+    <div class="panel-body">
+    <h2>{{selected.name}}</h2><br>
+    {{selected.description}}<br>
+    <h3>Estadísticas base:</h3>
+    PS:{{selected.ps}}<br>
+    Ataque:{{selected.atk}}<br>
+    Defensa:{{selected.df}}<br>
+    Ataque especial:{{selected.spAtk}}<br>
+    Defensa especial:{{selected.spDef}}<br>
+    Velocidad:{{selected.spe}}
+    </div>
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let pokemon of filtrada" [class.selected]="pokemon === selected"
+    (click)="onSelect(pokemon)">
+       #{{pokemon.number}}  | {{pokemon.name}}  
+    </li>
+</ul>
+
+
+
+<!-- | FilterPipe:text -->
